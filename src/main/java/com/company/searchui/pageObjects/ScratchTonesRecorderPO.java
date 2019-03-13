@@ -1,7 +1,7 @@
 package com.company.searchui.pageObjects;
 
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.iOSFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class ScratchTonesRecorderPO<M extends MobileElement> extends MobileBasePO<M> {
 
@@ -29,21 +29,21 @@ public class ScratchTonesRecorderPO<M extends MobileElement> extends MobileBaseP
         return null;
     }
 
-    @iOSFindBy(xpath = "//XCUIElementTypeButton[@name='Start']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Start']")
     protected M start;
 
-    @iOSFindBy(xpath = "//XCUIElementTypeButton[@name='record active']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='record active']")
     protected M recordTrack1;
 
-    @iOSFindBy(xpath = "//XCUIElementTypeButton[@name='off unselected']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='off unselected']")
     protected M offTrack1;
 
-    @iOSFindBy(xpath = "(//XCUIElementTypeButton[@name='play unselected'])[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='play unselected'])[1]")
     protected M playTrack1;
 
-    @iOSFindBy(xpath = "(//XCUIElementTypeSlider)[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeSlider)[1]")
     protected M balanceTrack1;
 
-    @iOSFindBy(xpath = "(//XCUIElementTypeSlider)[2]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeSlider)[2]")
     protected M volumeTrack1;
 }

@@ -6,7 +6,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -36,11 +36,11 @@ public abstract class MobileBasePO <M extends MobileElement> {
     // common MobileElement locators included in base class
 
     @AndroidFindBy(className = "myLogo")
-    @iOSFindBy(className = "myLogo")
+    @iOSXCUITFindBy(className = "myLogo")
     protected M companylogo;
 
     @AndroidFindBy(id = "title")
-    @iOSFindBy(xpath = "//*[@name = 'title']")
+    @iOSXCUITFindBy(xpath = "//*[@name = 'title']")
     protected M title;
 
 

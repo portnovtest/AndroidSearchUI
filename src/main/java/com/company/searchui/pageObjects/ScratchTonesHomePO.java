@@ -1,7 +1,7 @@
 package com.company.searchui.pageObjects;
 
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.iOSFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class ScratchTonesHomePO<M extends MobileElement> extends MobileBasePO<M> {
     public ScratchTonesHomePO() throws Exception {
@@ -28,7 +28,7 @@ public class ScratchTonesHomePO<M extends MobileElement> extends MobileBasePO<M>
         return null;
     }
 
-    @iOSFindBy(xpath = "//XCUIElementTypeButton[@name='My ScratchTones']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='My ScratchTones']")
     protected M myScratchTones;
 
     //or

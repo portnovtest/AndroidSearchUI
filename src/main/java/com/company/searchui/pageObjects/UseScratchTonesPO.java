@@ -1,7 +1,7 @@
 package com.company.searchui.pageObjects;
 
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.iOSFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class UseScratchTonesPO<M extends MobileElement> extends MobileBasePO<M> {
     public UseScratchTonesPO() throws Exception {
@@ -28,7 +28,7 @@ public class UseScratchTonesPO<M extends MobileElement> extends MobileBasePO<M> 
         return null;
     }
 
-    @iOSFindBy(xpath = "//XCUIElementTypeStaticText[starts-with(@name, '1. Connect your device')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[starts-with(@name, '1. Connect your device')]")
 //    @iOSFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, '1. Connect your device')]")
 //    @iOSFindBy(xpath = "//XCUIElementTypeStaticText[ends-with(@name, 'list.')]") // did not work for some reason
 //    @iOSFindBy(xpath = "//XCUIElementTypeStaticText[contains(text(), 'Connect your device')]") // did not work for some reason
