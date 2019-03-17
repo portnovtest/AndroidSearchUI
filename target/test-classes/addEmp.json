@@ -1,0 +1,16 @@
+{
+  "tc002_addEmp":
+          [
+            {"rowID" : "tc002_addEmp.01", "description" : "Add Employee", "id" : "EMP1", "name" : "John",
+              "gender" : "M", "age" : 23},
+
+            {"rowID" : "tc002_addEmp.02", "description" : "Add Employee", "id" : "EMP2", "name" : "Jane",
+              "gender" : "F", "age" : 30},
+
+            {"rowID" : "tc002_addEmp.03", "description" : "Add Employee", "id" : "EMP3", "name" : "Sally",
+              "gender" : "F", "age" : 19},
+
+            {"rowID" : "tc002_addEmp.04", "description" : "Add Employee", "id" : "EMP4", "name" : "Bob",
+              "gender" : "M", "age" : 40}
+          ]
+}
