@@ -5,11 +5,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.testng.annotations.DataProvider;
 
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * TestNG DataProvider Class for extracting JSON data

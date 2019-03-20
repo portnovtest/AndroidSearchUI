@@ -41,6 +41,12 @@ public class GMailLoginPO<M extends WebElement> {
         submit.click();
     }
 
+    public void login(String username, String email, String password) throws Exception{
+        this.email.sendKeys(email); // static WebElement name
+        this.password.sendKeys(password); // static WebElement name
+        submit.click();
+    }
+
     public void verifyTitle(String title) throws AssertionError {
         WebDriver driver = CreateDriver.getInstance().getDriver();
         assertEquals(driver.getTitle(), title, "Verify " + title);

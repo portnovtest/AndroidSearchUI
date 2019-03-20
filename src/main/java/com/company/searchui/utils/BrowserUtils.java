@@ -4,6 +4,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.FileInputStream;
+import java.util.Properties;
+
 /**
  * Browser Utility Class
  *
@@ -103,6 +106,26 @@ public class BrowserUtils {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    /**
+     * lookupMessage - method to retrieve error messages using code
+     *
+     * @param propFilePath - the property file including path
+     * @param code - the confirmation or error code
+     * @return String
+     * @throws Exception
+     */
+    public static String lookupMessage(String propFilePath, String code) throws Exception {
+        Properties props = new Properties();
+        props.load(new FileInputStream(propFilePath));
+        String getMsg = props.getProperty(code,null);
+
+        if (getMsg != null){
+            return getMsg;
+        } else {
+            throw new Exception("ERROR: The Code '" + code + "' was not found!");
         }
     }
 }

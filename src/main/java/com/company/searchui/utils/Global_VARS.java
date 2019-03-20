@@ -35,5 +35,6 @@ public class Global_VARS {
     public static final int TIOMOUT_ZERO = 0;
     public static final int TIMEOUT_ELEMENT = 10;
 
-
+    // property file path
+    public static final String EXCEPTION_MESSAGES = "/Users/phildolganov/IdeaProjects/AndroidSearchUI/src/test/resources/exception.properties";
 }
