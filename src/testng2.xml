@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My_Test_Suite" preserve-order="true" parallel="false" thread-count="1" verbose="2">
+    <!-- tests -->
+    <test name="My Test">
+        <!-- test parameters -->
+        <parameter name="browser" value="safari" />
+        <parameter name="platform" value="iphone" />
+        <parameter name="environment" value="saucelabs" />
+        <parameter name="mobile" value="iPhone 8 Simulator" />
+
+        <packages>
+            <package name="com.company.*" />
+        </packages>
+    </test>
+</suite>
+

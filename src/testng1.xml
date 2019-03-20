@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My_Test_Suite" preserve-order="true" parallel="false" thread-count="1" verbose="2">
+    <!-- tests -->
+    <test name="My Test">
+        <!-- test parameters -->
+        <parameter name="browser" value="chrome" />
+        <parameter name="platform" value="Windows 10" />
+        <parameter name="environment" value="local" />
+
+        <classes>
+            <class name="com.company.RockBandsTest"/>
+        </classes>
+    </test>
+</suite>

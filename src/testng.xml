@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="My_Test_Suite" preserve-order="true" verbose="2">
+<suite name="My_Test_Suite" preserve-order="true" parallel="false" thread-count="1" verbose="2">
+    <!-- groups: "regression", "smoke", "limit", "stress" etc ... -->
+    <groups>
+        <run>
+            <include name="SMOKETEST" />
+            <!--<include name="LIMIT" />-->
+            <!--<include name="REGRESSION" />-->
+            <!--<include name="NEGATIVE" />-->
+            <exclude name="NEGATIVE" />
+        </run>
+    </groups>
     <!-- test listeners -->
     <listeners>
         <listener class-name="com.company.searchui.utils.TestNG_Listener" />
         <listener class-name="com.company.searchui.utils.TestNG_Reporter" />
     </listeners>
-
+ <!-- using the BeanShell expression -->
+    <!-- tests -->
+    <test name="My_Test_Name">
+        <method-selectors>
+            <method-selector>
+                <script language="beanshell" >
+                    <![CDATA[
+                    String testGroups = "SMOKETEST,LIMIT";
+                    String [] splitTestGroups = testGroups.split(",");
+                    for( String group : splitTestGroups){
+                    if (groups.containsKey(group)){
+                    return true;
+                        }
+                    }
+                    return false;
+                    ]]>
+                </script>
+            </method-selector>
+        </method-selectors>
+    </test>
 </suite>
+
+<suite name="My_Test_Suite" preserve-order="true" parallel="false" thread-count="1" verbose="2">

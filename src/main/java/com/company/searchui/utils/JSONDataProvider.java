@@ -18,7 +18,8 @@ import java.util.List;
  *
  */
 public class JSONDataProvider {
-    public static String dataFile = "/Users/phildolganov/IdeaProjects/AndroidSearchUI/src/test/resources/myData_JSON.json";
+    //public static String dataFile = System.getProperty("user.dir") + "/src/test/resources/RockBands.json";
+    public static String dataFile = "";
     public static String testCaseName = "NA";
 
     /**

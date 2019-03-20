@@ -4,12 +4,22 @@ import com.company.searchui.utils.JSONDataProvider;
 import com.company.searchui.utils.RockBands;
 import com.company.searchui.utils.RockBandsBuilder;
 import com.google.gson.JsonObject;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class RockBandsTest {
 
+    public static final String DATA_FILE = System.getProperty("user.dir") + "/src/test/resources/RockBands.json";
+
+    // setup/teardown methods go here
+    @BeforeClass(alwaysRun = true,enabled = true)
+    protected void testClassSetup() throws Exception {
+        // set data file...
+        JSONDataProvider.dataFile = DATA_FILE;
+    }
+
     @Test(dataProvider = "myData_JSON", dataProviderClass = JSONDataProvider.class)
-    public void tc001_getBandInfo(JsonObject testData) throws Exception {
+    public void tc002_getBandInfo(JsonObject testData) throws Exception {
         // fetch object data and pass into Java object...
         RockBands rockBands = new RockBands(testData);
 
@@ -28,7 +38,7 @@ public class RockBandsTest {
     }
 
     @Test(dataProvider = "myData_JSON", dataProviderClass = JSONDataProvider.class)
-    public void tc002_getBandInfo(JsonObject testData) throws Exception {
+    public void tc001_getBandInfo(JsonObject testData) throws Exception {
         // fetch object data and pass into Java object...
         RockBandsBuilder rockBands = new RockBandsBuilder.Builder()
                 .name(testData.get("name").toString())
