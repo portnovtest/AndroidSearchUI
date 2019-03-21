@@ -1,6 +1,6 @@
 package com.company.searchui.pageObjects;
 
-import com.google.gson.JsonObject;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,7 +11,7 @@ public class UserPO<M extends WebElement> {
     @FindBy(id = "cancel")
     protected M cancel;
 
-    public void createUser(JsonObject user) throws Exception{
+    public void createUser(JSONObject user) throws Exception{
 
     }
 

@@ -1,6 +1,6 @@
 package com.company;
 
-import com.google.gson.JsonObject;
+import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 public class ReadPropertyFileTest {
 
     @Test
-    public void tc001_readPropertyFile(String rowID, String description, JsonObject testData)
+    public void tc001_readPropertyFile(String rowID, String description, JSONObject testData)
             throws IOException, AssertionError {
         Properties seleniumProps = new Properties();
         String propFile = testData.get("propFile").toString();

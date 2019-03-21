@@ -1,7 +1,7 @@
 package com.company.searchui.utils;
 // using the rock bands JSON data we introduced earlier, create a JSONObject w/ the required field values
 
-import com.google.gson.JsonObject;
+import org.json.simple.JSONObject;
 
 /**
  * Sample JSONObject Class
@@ -11,15 +11,15 @@ import com.google.gson.JsonObject;
  */
 public class RockBands {
     private String name, year, song;
-    private JsonObject members;
+    private JSONObject members;
 
     // the constructor requires the JSONObject when instantiated
 
-    public RockBands(JsonObject object) {
+    public RockBands(JSONObject object) {
         setName(object.get("name").toString());
         setYear(object.get("year").toString());
         setSong(object.get("song").toString());
-        setMembers((JsonObject) object.get("members"));
+        setMembers((JSONObject) object.get("members"));
     }
 
     public void setName(String name) {
@@ -46,11 +46,11 @@ public class RockBands {
         return this.song;
     }
 
-    public void setMembers(JsonObject members) {
+    public void setMembers(JSONObject members) {
         this.members = members;
     }
 
-    public JsonObject getMembers() {
+    public JSONObject getMembers() {
         return this.members;
     }
 

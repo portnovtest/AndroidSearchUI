@@ -4,13 +4,13 @@ import com.company.searchui.pageObjects.GMailLoginPO;
 import com.company.searchui.utils.BrowserUtils;
 import com.company.searchui.utils.Global_VARS;
 import com.company.searchui.utils.JSONDataProvider;
-import com.google.gson.JsonObject;
+import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 public class GmailLoginTest {
     // this method follows the Selenium Page Object Model
     @Test(groups = "LOGIN", dataProvider = "myData_JSON", dataProviderClass = JSONDataProvider.class, enabled = true)
-    public void tc001_loginCreds(String rowID, String description, JsonObject testData) throws Exception {
+    public void tc001_loginCreds(String rowID, String description, JSONObject testData) throws Exception {
 //        String email = testData.get("email").toString();
 ////        String password = testData.get("password").toString();
 ////        String title = testData.get("title").toString();

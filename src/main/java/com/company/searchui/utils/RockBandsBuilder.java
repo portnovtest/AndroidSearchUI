@@ -1,5 +1,7 @@
 package com.company.searchui.utils;
-import com.google.gson.JsonObject;
+
+
+import org.json.simple.JSONObject;
 
 /**
  * Sample JSONObject Class
@@ -9,14 +11,14 @@ import com.google.gson.JsonObject;
  */
 public class RockBandsBuilder {
     public String name, year, song;
-    public JsonObject members;
+    public JSONObject members;
 
     /**
      * Builder interface
      */
     public static class Builder {
         private String name, year, song;
-        private JsonObject members;
+        private JSONObject members;
 
         public Builder() {
         }
@@ -36,7 +38,7 @@ public class RockBandsBuilder {
             return this;
         }
 
-        public Builder members(JsonObject members) {
+        public Builder members(JSONObject members) {
             this.members = members;
             return this;
         }

@@ -1,17 +1,15 @@
 package com.company.searchui.utils;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.testng.annotations.DataProvider;
 
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * TestNG DataProvider Class for extracting JSON data
@@ -36,17 +34,17 @@ public class JSONDataProvider {
         Object rowID, description;
         Object[][] result;
         testCaseName = method.getName();
-        JsonArray testData = (JsonArray) extractData_JSON(dataFile).get(method.getName());
+        JSONArray testData = (JSONArray) extractData_JSON(dataFile).get(method.getName());
 
-        List<JsonObject> testDataList = new ArrayList<>();
+        List<JSONObject> testDataList = new ArrayList<>();
         for (int i = 0; i < testData.size(); i++) {
-            testDataList.add((JsonObject)testData.get(i));
+            testDataList.add((JSONObject)testData.get(i));
         }
         // include tests matching this pattern only
 
         if (System.getProperty("includePattern") != null){
             String include = System.getProperty("includePattern");
-            List<JsonObject> newList = new ArrayList<>();
+            List<JSONObject> newList = new ArrayList<>();
             List<String> tests = Arrays.asList(include.split(",", -1));
 
             for (String getTest : tests) {
@@ -98,11 +96,11 @@ public class JSONDataProvider {
      * @return JsonObject
      * @throws Exception
      */
-    public static JsonObject extractData_JSON(String file) throws Exception {
+    public static JSONObject extractData_JSON(String file) throws Exception {
         FileReader reader = new FileReader(file);
-        JsonParser jsonParser = new JsonParser();
+        JSONParser jsonParser = new JSONParser();
 
-        return (JsonObject) jsonParser.parse(reader);
+        return (JSONObject) jsonParser.parse(reader);
     }
 
     /**
@@ -113,8 +111,8 @@ public class JSONDataProvider {
      * @return
      * @throws Exception
      */
-    public static JsonArray fetchData(String file, String filter) throws Exception {
-        JsonArray testData = (JsonArray) extractData_JSON(file).get(filter);
+    public static JSONArray fetchData(String file, String filter) throws Exception {
+        JSONArray testData = (JSONArray) extractData_JSON(file).get(filter);
         return testData;
     }
 

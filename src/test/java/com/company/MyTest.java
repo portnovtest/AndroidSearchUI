@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.searchui.pageObjects.MyPageObject;
 import com.company.searchui.utils.JSONDataProvider;
-import com.google.gson.JsonObject;
+import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 public class MyTest {
@@ -22,7 +22,7 @@ public class MyTest {
      * @throws Exception
      */
     @Test(dataProvider = "myData_JSON", dataProviderClass = JSONDataProvider.class)
-    public void tc002_appFeatureAction(JsonObject data) throws Exception {
+    public void tc002_appFeatureAction(JSONObject data) throws Exception {
 
     }
 }

@@ -1,0 +1,19 @@
+{
+  "tc001_registerEmployees":
+  [
+    {
+      "rowID": "tc001_registerEmployees.01",
+      "description": "Register Employee",
+      "id": "ID1",
+      "address": {"street": "1600 Pennsylvania Ave NW", "city": "Washington", "state": "DC", "zip": "20500"},
+      "phone": {"home": "800-555-1212", "work": "800-555-1212", "mobile": "800-555-1212"}
+    },
+    {
+      "rowID": "tc001_registerEmployees.02",
+      "description": "Register Employee",
+      "id": "ID2",
+      "address": {"street": "1600 Pennsylvania Ave NW", "city": "Washington", "state": "DC", "zip": "20500"},
+      "phone": {"home": "800-555-1212", "work": "800-555-1212", "mobile": "800-555-1212"}
+    }
+  ]
+}

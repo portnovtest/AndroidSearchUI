@@ -1,6 +1,7 @@
 package com.company.searchui.utils;
 
-import com.google.gson.JsonObject;
+
+import org.json.simple.JSONObject;
 
 /**
  * Sample Register Employee Java Object
@@ -10,13 +11,13 @@ import com.google.gson.JsonObject;
  */
 public class RegisterEmployee {
     private String id;
-    private JsonObject address;
-    private JsonObject phone;
+    private JSONObject address;
+    private JSONObject phone;
 
-    public RegisterEmployee(JsonObject object) throws Exception {
+    public RegisterEmployee(JSONObject object) throws Exception {
         setId(object.get("id").toString());
-        setAddress((JsonObject)object.get("address"));
-        setPhone((JsonObject)object.get("phone"));
+        setAddress((JSONObject)object.get("address"));
+        setPhone((JSONObject)object.get("phone"));
     }
 
     public void setId(String id){
@@ -27,19 +28,19 @@ public class RegisterEmployee {
         return id;
     }
 
-    public void setAddress(JsonObject address){
+    public void setAddress(JSONObject address){
         this.address = address;
     }
 
-    public JsonObject getAddress(){
+    public JSONObject getAddress(){
         return address;
     }
 
-    public void setPhone(JsonObject phone){
+    public void setPhone(JSONObject phone){
         this.phone = phone;
     }
 
-    public JsonObject getPhone(){
+    public JSONObject getPhone(){
         return phone;
     }
 }
