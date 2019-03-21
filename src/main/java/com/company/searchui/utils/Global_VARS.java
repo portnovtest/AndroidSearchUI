@@ -37,4 +37,11 @@ public class Global_VARS {
 
     // property file path
     public static final String EXCEPTION_MESSAGES = "/Users/phildolganov/IdeaProjects/AndroidSearchUI/src/test/resources/exception.properties";
+    public static final String TEST_PROPS_PATH = "/Users/phildolganov/IdeaProjects/AndroidSearchUI/src/test/resources/propertyFile.properties";
+
+    // user defaults
+    public static String DEFAULT_URL = null;
+    public static String DEFAULT_USR = null;
+    public static String DEFAULT_PWD = null;
+
 }

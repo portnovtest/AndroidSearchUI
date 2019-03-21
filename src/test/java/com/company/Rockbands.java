@@ -1,5 +1,6 @@
 package com.company;
 
+import org.json.simple.JSONArray;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;

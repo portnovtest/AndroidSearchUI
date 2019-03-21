@@ -90,7 +90,7 @@ public class JSONDataProvider {
     }
 
     /**
-     * extractData_JSON - method to extract JSON data from a file
+     * extractData_JSON - create JSONObject containing all data sets
      *
      * @param file (including path)
      * @return JsonObject
@@ -116,4 +116,11 @@ public class JSONDataProvider {
         return testData;
     }
 
+    public void getBandInfo(String file, String rowID) throws Exception {
+        JSONArray testData = fetchData(file,rowID);
+        for (int i = 0; i < testData.size(); i++) {
+            RockBands rockBands = new RockBands((JSONObject)testData.get(i));
+            System.out.println(rockBands.toString() + "\n");
+        }
+    }
 }

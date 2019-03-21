@@ -6,8 +6,10 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Test Setup Base Class
@@ -18,6 +20,8 @@ import java.util.Map;
  */
 public abstract class MyCommonSetup {
 
+    public static Properties testProps = new Properties();
+
     // abstract methods
     protected abstract void testClassSetup(ITestContext context) throws Exception;
     protected abstract void testClassTeardown(ITestContext context) throws Exception;
@@ -26,7 +30,10 @@ public abstract class MyCommonSetup {
 
     @BeforeSuite(alwaysRun = true, enabled = true)
     protected void suiteSetup(ITestContext context) throws Exception {
-
+        testProps.load(new FileInputStream(Global_VARS.TEST_PROPS_PATH + System.getProperty("propertyFile")));
+        Global_VARS.DEFAULT_URL = testProps.getProperty("server.1.url");
+        Global_VARS.DEFAULT_USR = testProps.getProperty("server.1.username");
+        Global_VARS.DEFAULT_PWD = testProps.getProperty("server.1.password");
     }
 
     @AfterSuite(alwaysRun = true, enabled = true)
