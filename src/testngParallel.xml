@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel_Test_Suite" preserve-order="true" parallel="tests" thread-count="2" verbose="2">
+    <parameter name="environment" value="remote"/>
+    <!-- tests -->
+    <test name="Test 1 - Chrome/Windows 7">
+        <!-- test parameters -->
+        <parameter name="browser" value="chrome" />
+        <parameter name="platform" value="Windows 7" />
+        <parameter name="propertyFile" value="environment1.properties" />
+
+        <classes>
+            <class name="com.company.DualWebdriverTest"/>
+        </classes>
+    </test>
+
+    <test name="Test 2 - Firefox/Windows 7">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="platform`" value="Windows 7"/>
+        <parameter name="propertyFile" value="environment2.properties"/>
+
+        <classes>
+            <class name="com.company.DualWebdriverTest"/>
+        </classes>
+    </test>
+</suite>
+

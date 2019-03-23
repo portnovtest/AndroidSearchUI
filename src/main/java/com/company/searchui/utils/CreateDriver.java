@@ -15,6 +15,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
@@ -66,7 +67,7 @@ public class CreateDriver {
     }
 
     /**
-     * setDriver method
+     * setDriver method - create the WebDriver or AppiumDriver instance
      * @param browser
      * @param platform
      * @param environment
@@ -80,10 +81,13 @@ public class CreateDriver {
                                 Map<String, Object>...
                                             optPreferences) throws Exception {
         DesiredCapabilities caps = null;
+        String ffVersion = "66.0.1";
+        String platformVersion = "9.3";
         // load properties from file...
         driverProps.load(new FileInputStream(propertyFile));
 
-        String localHub = "http://127.0.0.1:4723/wd/hub";
+        String remoteHubURL = "http://127.0.0.1:4723/wd/hub";
+        String localHub = "http://myGridHubURL:4444/wd/hub";
         String getPlatform = null;
 
         switch (browser){
@@ -105,17 +109,18 @@ public class CreateDriver {
                 // for each browser instance
                 if (environment.equalsIgnoreCase("remote")){
                     // Set up the Selenium Grid capabilities...
-                    String remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
+                    remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
 
                     caps.setCapability("browserName", browser);
                     caps.setCapability("version", caps.getVersion());
                     caps.setCapability("platform", platform);
                     // unique user-specified name
-                    caps.setCapability("applicationName",platform + "-" + browser);
+                    caps.setCapability("applicationName",platform.toUpperCase() + "-" + browser.toUpperCase());
                     webDriver.set(new RemoteWebDriver(new URL(remoteHubURL), caps));
+                    ((RemoteWebDriver)webDriver.get()).setFileDetector(new LocalFileDetector());
                 } else if (environment.equalsIgnoreCase("saucelabs")){
                     // setup the Selenium Grid capabilities...
-                    String remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
+                    remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
                     caps.setCapability("screenResolution", "1920x1080");
                     caps.setCapability("recordVideo", false);
                     caps.setCapability("tunnelIdentifier", System.getProperty("TUNNEL_IDENTIFIER"));
@@ -152,17 +157,18 @@ public class CreateDriver {
                 // for each browser instance
                 if (environment.equalsIgnoreCase("remote")){
                     // Set up the Selenium Grid capabilities...
-                    String remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
+                    remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
 
                     caps.setCapability("browserName", browser);
                     caps.setCapability("version", caps.getVersion());
                     caps.setCapability("platform", platform);
                     // unique user-specified name
-                    caps.setCapability("applicationName",platform + "-" + browser);
+                    caps.setCapability("applicationName",platform.toUpperCase() + "-" + browser.toUpperCase());
                     webDriver.set(new RemoteWebDriver(new URL(remoteHubURL), caps));
+                    ((RemoteWebDriver)webDriver.get()).setFileDetector(new LocalFileDetector());
                 } else if (environment.equalsIgnoreCase("saucelabs")){
                     // setup the Selenium Grid capabilities...
-                    String remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
+                    remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
                     caps.setCapability("screenResolution", "1920x1080");
                     caps.setCapability("recordVideo", false);
                     caps.setCapability("tunnelIdentifier", System.getProperty("TUNNEL_IDENTIFIER"));
@@ -190,17 +196,18 @@ public class CreateDriver {
                 // for each browser instance
                 if (environment.equalsIgnoreCase("remote")){
                     // Set up the Selenium Grid capabilities...
-                    String remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
+                    remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
 
                     caps.setCapability("browserName", browser);
                     caps.setCapability("version", caps.getVersion());
                     caps.setCapability("platform", platform);
                     // unique user-specified name
-                    caps.setCapability("applicationName",platform + "-" + browser);
+                    caps.setCapability("applicationName",platform.toUpperCase() + "-" + browser.toUpperCase());
                     webDriver.set(new RemoteWebDriver(new URL(remoteHubURL), caps));
+                    ((RemoteWebDriver)webDriver.get()).setFileDetector(new LocalFileDetector());
                 } else if (environment.equalsIgnoreCase("saucelabs")){
                     // setup the Selenium Grid capabilities...
-                    String remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
+                    remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
                     caps.setCapability("screenResolution", "1920x1080");
                     caps.setCapability("recordVideo", false);
                     caps.setCapability("tunnelIdentifier", System.getProperty("TUNNEL_IDENTIFIER"));
@@ -222,17 +229,18 @@ public class CreateDriver {
                 // for each browser instance
                 if (environment.equalsIgnoreCase("remote")){
                     // Set up the Selenium Grid capabilities...
-                    String remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
+                    remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
 
                     caps.setCapability("browserName", browser);
                     caps.setCapability("version", caps.getVersion());
                     caps.setCapability("platform", platform);
                     // unique user-specified name
-                    caps.setCapability("applicationName",platform + "-" + browser);
+                    caps.setCapability("applicationName",platform.toUpperCase() + "-" + browser.toUpperCase());
                     webDriver.set(new RemoteWebDriver(new URL(remoteHubURL), caps));
+                    ((RemoteWebDriver)webDriver.get()).setFileDetector(new LocalFileDetector());
                 } else if (environment.equalsIgnoreCase("saucelabs")){
                     // setup the Selenium Grid capabilities...
-                    String remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
+                    remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
                     caps.setCapability("screenResolution", "1920x1080");
                     caps.setCapability("recordVideo", false);
                     caps.setCapability("tunnelIdentifier", System.getProperty("TUNNEL_IDENTIFIER"));
@@ -255,17 +263,18 @@ public class CreateDriver {
                 // for each browser instance
                 if (environment.equalsIgnoreCase("remote")){
                     // Set up the Selenium Grid capabilities...
-                    String remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
+                    remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
 
                     caps.setCapability("browserName", browser);
                     caps.setCapability("version", caps.getVersion());
                     caps.setCapability("platform", platform);
                     // unique user-specified name
-                    caps.setCapability("applicationName",platform + "-" + browser);
+                    caps.setCapability("applicationName",platform.toUpperCase() + "-" + browser.toUpperCase());
                     webDriver.set(new RemoteWebDriver(new URL(remoteHubURL), caps));
+                    ((RemoteWebDriver)webDriver.get()).setFileDetector(new LocalFileDetector());
                 } else if (environment.equalsIgnoreCase("saucelabs")){
                     // setup the Selenium Grid capabilities...
-                    String remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
+                    remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
                     caps.setCapability("screenResolution", "1920x1080");
                     caps.setCapability("recordVideo", false);
                     caps.setCapability("tunnelIdentifier", System.getProperty("TUNNEL_IDENTIFIER"));
@@ -291,20 +300,21 @@ public class CreateDriver {
                 // for each mobile device instance
                 if (environment.equalsIgnoreCase("remote")){
                     // Set up theSelenium Grid capabilities...
-                    String remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
+                    remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
                     caps.setCapability("browserName", browser);
-                    caps.setCapability("platform", platform);
+                    caps.setCapability("platformVersion", platformVersion);
+                    caps.setCapability("platform",platform);
 
                     // unique user-specified name
-                    caps.setCapability("applicationName", platform + "-" + browser);
+                    caps.setCapability("applicationName", platform.toUpperCase() + "-" +
+                            browser.toUpperCase());
                     if (browser.contains("iphone")){
+                        caps.setCapability("automationName", "XCUITest");
                         mobileDriver.set(new IOSDriver<>(new URL(remoteHubURL), caps));
-                    } else {
-                        mobileDriver.set(new AndroidDriver<>(new URL(remoteHubURL), caps));
                     }
                 } else if (environment.equalsIgnoreCase("saucelabs")){
                     // setup the Selenium Grid capabilities...
-                    String remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
+                    remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
                     caps.setCapability("screenResolution", "1920x1080");
                     caps.setCapability("recordVideo", false);
                     caps.setCapability("tunnelIdentifier", System.getProperty("TUNNEL_IDENTIFIER"));
@@ -323,20 +333,18 @@ public class CreateDriver {
                 // for each mobile device instance
                 if (environment.equalsIgnoreCase("remote")){
                     // Set up theSelenium Grid capabilities...
-                    String remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
+                    remoteHubURL = "http://mygrid-hub.companyname.com:4444/wd/hub";
                     caps.setCapability("browserName", browser);
                     caps.setCapability("platform", platform);
 
                     // unique user-specified name
                     caps.setCapability("applicationName", platform + "-" + browser);
-                    if (browser.contains("iphone")){
-                        mobileDriver.set(new IOSDriver<>(new URL(remoteHubURL), caps));
-                    } else {
+                    if (!browser.contains("iphone") || !browser.contains("ipad")){
                         mobileDriver.set(new AndroidDriver<>(new URL(remoteHubURL), caps));
                     }
                 } else if (environment.equalsIgnoreCase("saucelabs")){
                     // setup the Selenium Grid capabilities...
-                    String remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
+                    remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
                     caps.setCapability("screenResolution", "1920x1080");
                     caps.setCapability("recordVideo", false);
                     caps.setCapability("tunnelIdentifier", System.getProperty("TUNNEL_IDENTIFIER"));
@@ -358,7 +366,8 @@ public class CreateDriver {
      */
     public void setDriver(WebDriver driver){
         webDriver.set(driver);
-        sessionId.set(((RemoteWebDriver) webDriver.get()).getCapabilities().getBrowserName());
+        sessionId.set(((RemoteWebDriver) webDriver.get()).getSessionId().toString());
+        sessionBrowser.set(((RemoteWebDriver)webDriver.get()).getCapabilities().getBrowserName());
         sessionPlatform.set(((RemoteWebDriver) webDriver.get()).getCapabilities().getPlatform().toString());
         setBrowserHandle(getDriver().getWindowHandle());
     }

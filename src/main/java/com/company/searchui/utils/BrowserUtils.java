@@ -110,6 +110,23 @@ public class BrowserUtils {
     }
 
     /**
+     * exists method - used in conditional code, created using the Selenium ExpectedConditions class
+     * @param element
+     * @param timer
+     * @return
+     */
+    public static boolean exists(WebElement element, int timer){
+        try {
+            WebDriverWait wait = new WebDriverWait(CreateDriver.getInstance().getDriver(), timer);
+            wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
+            return true;
+        } catch (StaleElementReferenceException | TimeoutException | NoSuchElementException err) {
+            err.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
      * lookupMessage - method to retrieve error messages using code
      *
      * @param propFilePath - the property file including path

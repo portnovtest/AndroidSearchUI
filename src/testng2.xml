@@ -8,6 +8,7 @@
         <parameter name="platform" value="iphone" />
         <parameter name="environment" value="saucelabs" />
         <parameter name="mobile" value="iPhone 8 Simulator" />
+        <parameter name="release" value="1.0.x"/>
 
         <packages>
             <package name="com.company.*" />
