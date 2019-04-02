@@ -119,11 +119,76 @@ public class CreateDriver {
                     webDriver.set(new RemoteWebDriver(new URL(remoteHubURL), caps));
                     ((RemoteWebDriver)webDriver.get()).setFileDetector(new LocalFileDetector());
                 } else if (environment.equalsIgnoreCase("saucelabs")){
-                    // setup the Selenium Grid capabilities...
-                    remoteHubURL = "http://SAUCE_USERNAME:SAUCE_ACCESS_KEY@ondemand.saucelabs.com:80/wd/hub";
-                    caps.setCapability("screenResolution", "1920x1080");
-                    caps.setCapability("recordVideo", false);
-                    caps.setCapability("tunnelIdentifier", System.getProperty("TUNNEL_IDENTIFIER"));
+                    String SAUCE_USERNAME = "xyz";
+                    String SAUCE_ACCESS_KEY = "XYZ";
+
+                    if (System.getenv("SAUCE_USERNAME")!= null && System.getenv("SAUCE_ACCESS_KEY")!=null){
+                        remoteHubURL = "http://" + System.getenv("SAUCE_USERNAME") + ":"
+                                + System.getenv("SAUCE_ACCESS_KEY") + "@ondemand.saucelabs.com:80/wd/hub";
+                    } else {
+                        remoteHubURL = "http://[SAUCE_USERNAME]:[SAUCE_ACCESS_KEY]@" + "@ondemand.saucelabs.com:80/wd/hub";
+                    }
+
+
+                    // section in CreateDriver.java class for saucelabs display
+                    if (platform.toLowerCase().contains("mac") || platform.toLowerCase().contains("os x")){
+                        caps.setCapability("screenResolution","2560x1600");
+                    } else {
+                        caps.setCapability("screenResolution", "1920x1080");
+                    }
+
+                    // section in CreateDriver.java class for saucelabs platform
+
+                    if (System.getenv("SELENIUM_PLATFORM") !=null ){
+                        caps.setCapability("platform", System.getenv("SELENIUM_PLATFORM"));
+                    }
+
+                    // section in CreateDriver.java class for saucelabs features
+
+                    caps.setCapability("build",System.getProperty("BUILD_NUMBER"));
+                    caps.setCapability("maxDuration", 10800);
+                    caps.setCapability("commandTimeout", 300);
+                    caps.setCapability("idleTimeout", 300);
+                    caps.setCapability("tags",platform + "," + browser + "," + "62.0");
+
+                    if (System.getProperty("RECORDING").equalsIgnoreCase("true")){
+                        caps.setCapability("recordVideo", true);
+                        caps.setCapability("videoUploadOnPass", true);
+                        caps.setCapability("recordScreenshots", true);
+                        caps.setCapability("recordLogs", true);
+                    } else {
+                        caps.setCapability("recordVideo", false);
+                    }
+
+                    if (System.getenv("TUNNEL_IDENTIFIER")!= null){
+                        caps.setCapability("tunnelIdentifier", System.getenv("TUNNEL_IDENTIFIER"));
+                    }
+
+                    // section in CreateDriver.java class for TestObject features
+
+                    boolean realDevice = true;
+
+                    if (realDevice == true){
+                        caps.setCapability("testobject_device","iPhone 6");
+                        caps.setCapability("testobject_cache_device",false);
+                        caps.setCapability("testobject_session_creation_timeout","900000");
+                        caps.setCapability("testobject_appium_version","1.12.1");
+                        caps.setCapability("test_object_suite_name","mySuiteName");
+                        caps.setCapability("testobject_app_id", 1);
+                        caps.setCapability("test_object_test_name","myTestName");
+
+                        // private pool caps
+                        caps.setCapability("phoneOnly","iphone.phoneOnly.rdc");
+                        caps.setCapability("tabletOnly","iphone.tabletOnly.rdc");
+                        caps.setCapability("privateDevicesOnly","iphone.privateDevicesOnly.rdc");
+                        if (browser.contains("iphone") || browser.contains("ipad")){
+                            caps.setCapability("testobject_api_key", "iOSAppKey");
+                        } else {
+                            caps.setCapability("testobject_api_key","androidAppKey");
+                        }
+                        remoteHubURL = "https://us1.appium.testobject.com/wd/hub";
+                    }
+
                 } else if (environment.equalsIgnoreCase("local")){
                     if (platform.toLowerCase().contains("windows")){
                         System.setProperty("webdriver.gecko.driver", driverProps.getProperty("gecko.driver.windows.path"));

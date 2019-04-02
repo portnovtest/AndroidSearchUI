@@ -3,22 +3,22 @@
     {
       "rowID": "tc001_gmailLoginCreds.01",
       "description": "Gmail Login Test - Positive",
-      "username": "johnsmith@gmail.com",
-      "password": "password",
+      "username": "[USER]",
+      "password": "[PASSWORD]",
       "error": null
     },
     {
       "rowID": "tc001_gmailLoginCreds.02",
       "description": "Gmail Login Test - Negative (Invalid Account)",
-      "username": "johnsmithxx@gmail.com",
-      "password": "password",
+      "username": "[USER]",
+      "password": "[PASSWORD]",
       "error": "002"
     },
     {
       "rowID": "tc001_gmailLoginCreds.03",
       "description": "Gmail Login Test - Force Exception",
-      "username": "johnsmithxx@gmail.com",
-      "password": "password",
+      "username": "[USER]",
+      "password": "[PASSWORD]",
       "error": null
     }
   ]

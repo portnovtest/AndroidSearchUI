@@ -20,7 +20,7 @@ public class Global_VARS {
     public static String PROPS_PATH = null;
 
     // driver class defaults
-    public static String propFile = "../myPath/selenium.props";
+    public static String propFile = "/Users/phildolganov/IdeaProjects/AndroidSearchUI/src/test/resources/selenium.properties";
     public static final String SE_PROPS = new File(propFile).getAbsolutePath();
 
     // test output path defaults
@@ -43,5 +43,4 @@ public class Global_VARS {
     public static String DEFAULT_URL = null;
     public static String DEFAULT_USR = null;
     public static String DEFAULT_PWD = null;
-
 }
